@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box !important;
+    font-family: 'Droid Serif', serif; 
+}
+
+#bienvenida{
+    height: inherit;
+    text-align: center;
+}
+
+.no-display{
+    display: none;
+}
+
+.text2{
+    padding-top: 30%; 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 550%;
+}
+
+.btn {
+    background-color: #fed136 !important;
+    border: none !important;
+    border-radius: 2px !important;
+    padding: 20px 50px !important;
+    font-weight: bold !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4em !important;
+    margin-bottom: 120px;
+}
+
+header {
+    background-image: url(../img/portada1.jpeg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    height: 900px;
+    top: 0px;
+}
+
+.text3{
+    padding-top: 5%; 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 550%;
+}
