@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <header id="bienvenida">
+    <!-- <header id="bienvenida">
         <section>
             <div class="container description">
                 <div class="row">
@@ -34,30 +34,157 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                     <h1 class="text3">Menú Principal</h1>
-                    <hr>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p><a class="btn btn-primary" href="#" role="button" id="">RESERVAR</a></p>
+            <div class="row text-center">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <p><a class="btn btn-primary" href="#" role="button" id="reservar">RESERVAR</a></p>
                 </div>
-                <div class="col-md-3">
-                    <p><a class="btn btn-primary" href="#" role="button" id="">LIBERAR</a></p>
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <p><a class="btn btn-primary" href="#" role="button" id="liberar">LIBERAR</a></p>
                 </div>
-                <div class="col-md-3">
-                    <p><a class="btn btn-primary" href="#" role="button" id="r">BUSCAR</a></p>
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <p><a class="btn btn-primary" href="#" role="button" id="buscar">BUSCAR</a></p>
                 </div>
-                <div class="col-md-3">
-                    <p><a class="btn btn-primary" href="#" role="button" id="">LISTAR</a></p>
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <p><a class="btn btn-primary" href="#" role="button" id="listar">LISTAR</a></p>
                 </div>
             </div>
         </div>
     </section>
+    <section id="reservarAsiento" class="no-display">
+        <div class="container">
+            <div class="row" id="tituloReservar">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                    <h1 class="text3">Selecciona un Asiento</h1>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-lg-12 col-md-offset-1 col-md-10 col-sm-12 col-xs-12 ">
+                    <table>
+                        <tr>
+                            <td class="btn btn-default">1</td>
+                            <td class="btn btn-default">3</td>
+                            <td class="btn btn-default">5</td>
+                            <td class="btn btn-default">7</td>
+                            <td class="btn btn-default">9</td>
+                        </tr>
+                        <td class="btn btn-default">2</td>
+                        <td class="btn btn-default">4</td>
+                        <td class="btn btn-default">6</td>
+                        <td class="btn btn-default">8</td>
+                        <td class="btn btn-default">10</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
 
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="">Asiento:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="asiento" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="">DNI:</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="dni">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="">Nombre:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="nombre">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="">Apellido:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="apellido">
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <p><a class="btn btn-primary pull-right" href="#" role="button" id="userReservar">Reservar</a></p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <p><a class="btn btn-primary pull-left" href="#" role="button" id="menuPrincipal">Menú Principal</a></p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <p><a class="btn btn-primary pull-right no-display" href="#" role="button" id="userLiberar">Liberar</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>">
 
-
+ -->
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8">
+     <title>Lista de asientos</title>
+   </head>
+   <body>
+     <table id="tablaPasajeros" align="center" border=1>
+       <tr>
+           <td id="04">04</td><td id="08">08</td><td id="12">12</td><td id="16">16</td><td id="20">20</td><td id="24">24</td><td id="28">28</td><td id="32">32</td>
+       </tr>
+       <tr>
+           <td id="03">03</td><td id="07">07</td><td id="11">11</td><td id="15">15</td><td id="19">19</td><td id="23">23</td><td id="27">27</td><td id="31">31</td>
+       </tr>
+       <tr>
+           <td id="02">02</td><td id="06">06</td><td id="10">10</td><td id="14">14</td><td id="18">18</td><td id="22">22</td><td id="26">26</td><td id="30">30</td>
+       </tr>
+       <tr>
+           <td id="01">01</td><td id="05">05</td><td id="09">09</td><td id="13">13</td><td id="17">17</td><td id="21">21</td><td id="25">25</td><td id="29">29</td>
+       </tr>
+     </table> <br />
+     </div>
+     <div>
+       <div align="center">
+         <h3>Búsqueda</h3>
+         <label>DNI: </label>
+         <input type="number" id="buscarDNI" placeholder="Ingrese el DNI">
+         <button id="btnBuscarDNI" onclick="buscarPorDni()">Buscar</button>
+         <div align="center" id="dniEncontrado">
+         </div>
+       </div><br />
+ 
+       <div align="center">
+         <div align="center"><h3><strong>Registro de pasajeros</strong></h3></div><br/ >
+         <label>Asiento Seleccionado: </label>
+         <div id="mostrar" align="center"></div>
+         <div id="estado" align="center"></div>
+         <div id="datos">
+           <input type="text" id="userNombre" placeHolder="Nombre"><br />
+           <input type="text" id="userApellido" placeHolder="Apellido"><br />
+           <input type="number" id="userDNI" placeHolder="DNI">
+         </div><br />
+         <div id="botones">
+           <button id="btnReservar" onclick="reservar()">Reservar</button>
+           <button id="btnCancelar" onclick="cancelar()">Cancelar</button>
+         </div><br />
+         <div id="imprimir" align="center"></div>
+         <button id="btnLimpiarReservar" onclick="limpiarReservar()">Aceptar</button>
+       </div>
+     </div>
+     <div align="center">
+       <h3>Registro completo</h3>
+       <button id="btnListar" onclick="listar()">Listar</button>
+       <button id="btnLimpiarLista" onclick="limpiarLista()">Limpiar</button>
+       <div id="listado"></div>
+     </div>
+     <script src="assets/js/pasajero.js"></script>
+   </body>
+ </html>
+ 
     <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <script src="assets/js/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>

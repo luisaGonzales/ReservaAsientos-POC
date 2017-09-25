@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box !important;
-    font-family: 'Droid Serif', serif; 
+    font-family: 'Montserrat', sans-serif;
 }
 
 #bienvenida{
@@ -17,17 +17,23 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
     font-size: 550%;
+    color: white;
 }
 
 .btn {
     background-color: #fed136 !important;
-    border: none !important;
-    border-radius: 2px !important;
-    padding: 20px 50px !important;
-    font-weight: bold !important;
+    border: none;
+    border-radius: 2px;
+    padding: 20px 50px;
+    font-weight: bold;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.4em !important;
-    margin-bottom: 120px;
+    font-size: 1.4em;
+    color: #333333;
+}
+
+header .btn{
+    margin-bottom: 124px;
+    color: white;
 }
 
 header {
@@ -35,7 +41,6 @@ header {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    color: white;
     height: 900px;
     top: 0px;
 }
@@ -45,4 +50,31 @@ header {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
     font-size: 550%;
+}
+
+#menu{
+    background-image: url(../img/fondo.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 670px;
+    top: 0px;
+}
+
+table .btn{
+    background-color: #fed136 !important;
+    margin: 2px;
+    border-radius: 2px !important;
+    font-weight: bold !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4em !important;
+    color: #333333;
+    width: 200px;
+}
+table{
+    margin-bottom: 30px;
+}
+
+.reservado{
+    background-color: rgba(54, 124, 254, 0.82) !important;
 }
