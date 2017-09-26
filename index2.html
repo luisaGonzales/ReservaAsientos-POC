@@ -9,6 +9,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i|Kaushan+Script|Montserrat:400,500,600,600i,700,700i,800,800i|Roboto+Slab:400,700&amp;subset=latin-ext"
         rel="stylesheet">
@@ -17,18 +18,17 @@
 </head>
 
 <body>
-    <!-- <header id="bienvenida">
-        <section>
-            <div class="container description">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                        <p class="text2">RESERVA DE ASIENTOS</p>
-                        <p><a class="btn btn-primary" href="#" role="button" id="ingresar">INGRESAR</a></p>
-                    </div>
+
+    <section id="bienvenida">
+        <div class="container description">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                    <p class="text2">RESERVA DE ASIENTOS</p>
+                    <p><a class="btn btn-primary" href="#" role="button" id="ingresar">INGRESAR</a></p>
                 </div>
             </div>
-        </section>
-    </header>
+        </div>
+    </section>
     <section id="menu" class="no-display">
         <div class="container">
             <div class="row">
@@ -38,16 +38,16 @@
             </div>
             <div class="row text-center">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <p><a class="btn btn-primary" href="#" role="button" id="reservar">RESERVAR</a></p>
+                    <p><a class="btn btn-primary" href="#" role="button" id="opReservar">RESERVAR</a></p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <p><a class="btn btn-primary" href="#" role="button" id="liberar">LIBERAR</a></p>
+                    <p><a class="btn btn-primary" href="#" role="button" id="opLiberar">LIBERAR</a></p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <p><a class="btn btn-primary" href="#" role="button" id="buscar">BUSCAR</a></p>
+                    <p><a class="btn btn-primary" href="#" role="button" id="opBuscar">BUSCAR</a></p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <p><a class="btn btn-primary" href="#" role="button" id="listar">LISTAR</a></p>
+                    <p><a class="btn btn-primary" href="#" role="button" id="opListar">LISTAR</a></p>
                 </div>
             </div>
         </div>
@@ -61,19 +61,19 @@
             </div>
             <div class="row text-center">
                 <div class="col-lg-12 col-md-offset-1 col-md-10 col-sm-12 col-xs-12 ">
-                    <table>
+                    <table id="tablaPasajeros">
                         <tr>
-                            <td class="btn btn-default">1</td>
-                            <td class="btn btn-default">3</td>
-                            <td class="btn btn-default">5</td>
-                            <td class="btn btn-default">7</td>
-                            <td class="btn btn-default">9</td>
+                            <td id="1" class="btn btn-default">1</td>
+                            <td id="3" class="btn btn-default">3</td>
+                            <td id="5" class="btn btn-default">5</td>
+                            <td id="7" class="btn btn-default">7</td>
+                            <td id="9" class="btn btn-default">9</td>
                         </tr>
-                        <td class="btn btn-default">2</td>
-                        <td class="btn btn-default">4</td>
-                        <td class="btn btn-default">6</td>
-                        <td class="btn btn-default">8</td>
-                        <td class="btn btn-default">10</td>
+                        <td id="2" class="btn btn-default">2</td>
+                        <td id="4" class="btn btn-default">4</td>
+                        <td id="6" class="btn btn-default">6</td>
+                        <td id="8" class="btn btn-default">8</td>
+                        <td id="10" class="btn btn-default">10</td>
                         </tr>
                     </table>
                 </div>
@@ -119,71 +119,19 @@
                 </div>
             </div>
         </div>
-    </section>"> -->
-
-
- <!DOCTYPE html>
- <html>
-   <head>
-     <meta charset="utf-8">
-     <title>Lista de asientos</title>
-   </head>
-   <body>
-     <table id="tablaPasajeros" align="center" border=1>
-       <tr>
-           <td id="02">02</td><td id="04">04</td><td id="06">06</td><td id="08">08</td><td id="10">10</td>
-       </tr>
-       <tr>
-           <td id="01">01</td><td id="03">03</td><td id="05">05</td><td id="07">07</td><td id="09">09</td>
-       </tr>    
-     </table> <br />
-     </div>
-     <div>
-       <div align="center">
-         <h3>Búsqueda</h3>
-         <label>DNI: </label>
-         <input type="number" id="buscarDNI" placeholder="Ingrese el DNI">
-         <button id="btnBuscarDNI">Buscar</button>
-         <div align="center" id="dniEncontrado">
-         </div>
-       </div><br />
- 
-       <div align="center">
-         <div align="center"><h3><strong>Registro de pasajeros</strong></h3></div><br/ >
-         <label>Asiento Seleccionado: </label>
-         <div id="mostrar" align="center"></div>
-         <div id="estado" align="center"></div>
-         <div id="datos">
-           <input type="text" id="userNombre" placeHolder="Nombre"><br />
-           <input type="text" id="userApellido" placeHolder="Apellido"><br />
-           <input type="number" id="userDNI" placeHolder="DNI">
-         </div><br />
-         <div id="botones">
-           <button id="btnReservar" >Reservar</button>
-           <button id="btnCancelar" >Cancelar</button>
-         </div><br />
-         <div id="imprimir" align="center"></div>
-         <button id="btnLimpiarReservar">Aceptar</button>
-       </div>
-     </div>
-     <div align="center">
-       <h3>Registro completo</h3>
-       <button id="btnListar">Listar</button>
-       <button id="btnLimpiarLista">Limpiar</button>
-       <div id="listado"></div>
-     </div>
-     <!-- <script src="assets/js/pasajero.js"></script> -->
- 
+    </section>
+    <section id="busqueda">
+        
+    </section>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- <script src="assets/js/jquery.min.js"></script> -->
     <!-- Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
     <!-- FontAwesome -->
     <script src="https://use.fontawesome.com/1625bb79ec.js"></script>
     <!-- Javascript -->
-    <script src="assets/js/main2.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
