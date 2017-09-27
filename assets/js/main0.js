@@ -85,8 +85,7 @@ class Avion {
             });
             this.limpiar();
             let x = this._asientos.indexOf(asiento);
-            this.celdas[x + 1].classList.add("reservado");
-            console.log(this.celdas[x + 1]);
+            this.celdas[x].classList.add("reservado");
         }
 
     }
@@ -118,7 +117,7 @@ class Avion {
             });
         } else {
             console.log(this.pasajeros);
-            this.pasajeros.sort((a, b)=>{return (parseInt(b.asiento) - parseInt(a.asiento));});
+            this.pasajeros.sort((a, b)=>{return (parseInt(a.asiento) - parseInt(b.asiento));});
             console.log(this.pasajeros);
             for (let i = 0; i < this.pasajeros.length; i++) {
                 let datos = this.pasajeros[i];
