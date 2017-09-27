@@ -145,7 +145,7 @@ class Avion {
 let avion = new Avion;
 
 $(document).ready(() => {
-    
+   
         // let avion = new Avion();
         avion.iniciar();
     })

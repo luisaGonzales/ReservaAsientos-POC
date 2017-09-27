@@ -52,6 +52,13 @@ p{
     font-size: 550%;
 }
 
+.text4{
+    padding-top: 5%; 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 250%;
+}
+
 #menu{
     background-image: url(../img/fondo.jpg);
     background-position: center;
@@ -77,4 +84,22 @@ table{
 
 .reservado{
     background-color: rgba(54, 124, 254, 0.82) !important;
+}
+
+#dniEncontrado{
+    font-size: 1.2em;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #333333;
+    margin: 30px;
+    text-transform: capitalize;
+    color: white;
+}
+.lista{
+    font-size: 1.2em;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #333333;
+    margin: 5px;
+    text-transform: capitalize;
+    color: white;
+    padding: 20px;
 }

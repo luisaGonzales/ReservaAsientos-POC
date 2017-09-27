@@ -33,81 +33,131 @@ class Avion {
                 $("#userNombre").attr("disabled", "disabled");
                 $("#userApellido").attr("disabled", "disabled");
             } else {
-                $("#userDNI").removeAttr("disabled");
-                $("#userNombre").removeAttr("disabled");
-                $("#userApellido").removeAttr("disabled");
-                $("#userDNI").val("");
-                $("#userNombre").val("");
-                $("#userApellido").val("");
-                // this.limpiar();
+                this.limpiarDatos();
+                if ($(`#btnReservar`).hasClass("no-display") == false) {
+                    $("#userDNI").removeAttr("disabled");
+                    $("#userNombre").removeAttr("disabled");
+                    $("#userApellido").removeAttr("disabled");
+                }
             }
         }
         this.limpiarBuscar();
     }
     reservar() {
         let asiento = $("#userAsiento").val();
-        let imprimir = $("#imprimir");
 
         if (this.buscarAsiento() == true) {
-            alert("El asiento ya está ocupado");
+            swal({
+                title: "Error",
+                text: "El asiento ya está ocupado",
+                type: 'error',
+                confirmButtonText: 'Aceptar'
+            });
         } else if (($("#userNombre").val() == "") && ($("#userApellido").val() == "") && ($("#userDNI").val() == "")) {
-            alert("El registro está vacío, intentalo nuevamente");
+            swal({
+                title: "Error",
+                text: "El registro está vacío, intentalo nuevamente",
+                type: 'error',
+                confirmButtonText: 'Aceptar'
+            });
         } else if (($("#userNombre").val() == "") || ($("#userApellido").val() == "") || ($("#userDNI").val() == "")) {
-            alert("Faltan ingresar datos");
+            swal({
+                title: "Error",
+                text: "Faltan ingresar datos",
+                type: 'error',
+                confirmButtonText: 'Aceptar'
+            });
         } else if (asiento == "") {
-            alert("Falta seleccionar el número de asiento a ser ocupado");
+            swal({
+                title: "Error",
+                text: "Falta seleccionar el número de asiento a ser ocupado",
+                type: 'error',
+                confirmButtonText: 'Aceptar'
+            });
         } else {
             this.pasajeros.push(new Pasajero($("#userNombre").val(), $("#userApellido").val(), $("#userDNI").val(), asiento));
-            imprimir.html = `<strong>Asiento Registrado</strong> </br>Nombre: ${ $("#userNombre").val()} </br>Apellido:  ${$("#userApellido").val()} </br>DNI: ${ $("#dni").val()} </br>Asiento: ${asiento}`;
+            let imprimir = `Nombre: ${ $("#userNombre").val()} Apellido:  ${$("#userApellido").val()} DNI: ${ $("#userDNI").val()} Asiento: ${asiento}`;
+            swal({
+                title: 'Asiento Registrado',
+                text: imprimir,
+                type: 'success',
+                confirmButtonText: 'Aceptar'
+            });
             this.limpiar();
             let x = this._asientos.indexOf(asiento);
-            console.log(x);
-            this.celdas[x].style.backgroundColor = "#73C6B6";
+            this.celdas[x + 1].classList.add("reservado");
+            console.log(this.celdas[x + 1]);
         }
-        
+
     }
     cancelar() {
-
         let n = this._asientos.indexOf(this.asiento.val());
         this.celdas[n].style.backgroundColor = "white";
         for (let i = 0; i < this.pasajeros.length; i++) {
             if (this.asiento.val() == this.pasajeros[i].asiento) {
                 this.pasajeros.splice(i, 1);
-                alert("Asiento liberado");
+                swal({
+                    title: "Operación Exitosa",
+                    text: "Asiento Liberado",
+                    type: 'success',
+                    confirmButtonText: 'Aceptar'
+                });
             }
         }
         this.limpiar();
     }
     listar() {
         let listado = $("#listado");
-        let lista = "<h4>Listado de asientos ocupados</h4>";
-        if (datos == []) {
-            alert("Todos los asientos están vacíos")
+        let lista = "<h4 class='text4'>Lista de asientos ocupados</h4>";
+        if (this.pasajeros.length == 0) {
+            swal({
+                title: "Búsqueda",
+                text: "Todos los asientos están vacíos",
+                type: 'info',
+                confirmButtonText: 'Aceptar'
+            });
         } else {
+            console.log(this.pasajeros);
+            this.pasajeros.sort((a, b)=>{return (parseInt(b.asiento) - parseInt(a.asiento));});
+            console.log(this.pasajeros);
             for (let i = 0; i < this.pasajeros.length; i++) {
                 let datos = this.pasajeros[i];
                 let sNombre = datos.nombre;
                 let sApellido = datos.apellido;
                 let sDni = datos.dni;
                 let sAsiento = datos.asiento;
-                lista += `<div><strong> Asiento: ${sAsiento} </strong> <br/>Nombre: ${sNombre} </br>Apellido: ${sApellido} </br> DNI: ${sDni} </div> </br>`;
+                lista += `<div class='text-center lista'><strong> Asiento: ${sAsiento} </strong> <br/>Nombre: ${sNombre} </br>Apellido: ${sApellido} </br> DNI: ${sDni} </div> </br>`;
                 listado.html(lista);
             }
         }
     }
     buscarPorDni() {
-        let dniBuscado = document.getElementById("buscarDNI").value;
-        let dniEncontrado = document.getElementById("dniEncontrado");
+        let dniBuscado = $("#buscarDNI").val();
+        let dniEncontrado = $("#dniEncontrado");
         let res = "";
         for (let i = 0; i < this.pasajeros.length; i++) {
             if (dniBuscado == this.pasajeros[i].dni) {
-                res = "<strong>DNI: </strong>" + dniBuscado + "<br/> Nombre: " + this.pasajeros[i].nombre + "<br/>Apellido: " + this.pasajeros[i].apellido + "<br/>Asiento: " + this.pasajeros[i].asiento;
+                res = "DNI: " + dniBuscado + "\n Nombre: " + this.pasajeros[i].nombre + " Apellido: " + this.pasajeros[i].apellido + " Asiento: " + this.pasajeros[i].asiento;
                 break;
+                
             } else {
-                res = "<strong>DNI: </strong>" + dniBuscado + "<br/> DNI no registrado";
+                swal({
+                    title: "Error",
+                    text: "DNI no registrado",
+                    type: 'error',
+                    confirmButtonText: 'Aceptar'
+                });
+                $("#buscarDNI").val() = "";
             }
         }
-        dniEncontrado.innerHTML = res;
+        swal({
+            title: "DNI encontrado",
+            text: res,
+            type: 'info',
+            confirmButtonText: 'Aceptar'
+        });
+        $("#buscarDNI").val() = "";
+
     }
     buscarAsiento() {
         let asiento = this.asiento.val();
@@ -121,6 +171,11 @@ class Avion {
         }
         return res;
     }
+    limpiarDatos() {
+        $("#userDNI").val("");
+        $("#userNombre").val("");
+        $("#userApellido").val("");
+    }
     limpiar() {
         let inputs = $("input");
         for (let i = 0; i < inputs.length; i++) {
@@ -128,20 +183,11 @@ class Avion {
         }
         this.asiento.html = "";
     }
-    limpiarLista() {
-        let listado = $("#listado");
-        listado.html = "";
-    }
     limpiarBuscar() {
         let espacio = $("#dniEncontrado");
         let input = $("#buscarDNI");
         espacio.html("");
         input.val("");
-    }
-    limpiarReservar() {
-        let espacio = $("#imprimir");
-        espacio.html("");
-        this.limpiar();
     }
     iniciar() {
         $("#ingresar").click(() => {
@@ -172,8 +218,10 @@ class Avion {
             $(`#${this.navegacion[3]}`).removeClass("no-display");
         });
         $("#opListar").click(() => {
+            this.limpiar();
             $(`#${this.navegacion[1]}`).addClass("no-display");
             $(`#${this.navegacion[4]}`).removeClass("no-display");
+            this.listar();
         });
         // Navegacion
         $("#btnVolver").click(() => {
@@ -192,9 +240,6 @@ class Avion {
         $("#btnBuscarDNI").click(() => this.buscarPorDni());
         $("#btnReservar").click(() => this.reservar());
         $("#btnCancelar").click(() => this.cancelar());
-        // $("#btnLimpiarReservar").click(() => this.limpiarReservar());
-        $("#btnListar").click(() => this.listar());
-        // $("#btnLimpiarLista").click(()=> this.limpiarLista());
     }
 }
 
@@ -202,6 +247,4 @@ let avion = new Avion;
 
 $(document).ready(() => {
     avion.iniciar();
-
-
 });
