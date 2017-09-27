@@ -134,7 +134,6 @@ class Avion {
     }
     buscarPorDni() {
         let dniBuscado = $("#buscarDNI").val();
-        let dniEncontrado = $("#dniEncontrado");
         let res = "";
         for (let i = 0; i < this.pasajeros.length; i++) {
             if (dniBuscado == this.pasajeros[i].dni) {
