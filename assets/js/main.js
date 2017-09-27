@@ -91,7 +91,7 @@ class Avion {
     }
     cancelar() {
         let n = this._asientos.indexOf(this.asiento.val());
-        this.celdas[n].style.backgroundColor = "white";
+        this.celdas[n].classList.remove("reservadogit ");
         for (let i = 0; i < this.pasajeros.length; i++) {
             if (this.asiento.val() == this.pasajeros[i].asiento) {
                 this.pasajeros.splice(i, 1);
