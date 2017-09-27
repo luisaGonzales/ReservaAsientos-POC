@@ -15,6 +15,7 @@ class Avion {
     constructor() {
         this._asientos = [];
         this.pasajeros = [];
+        this.asiento = $("#mostrar");
         this.celdas = document.getElementsByTagName('td');
         for (let i = 0; i < this.celdas.length; i++) {
             this.celdas[i].onclick = () => (this.redirect(event));
@@ -22,48 +23,44 @@ class Avion {
         }
     }
     redirect(event) {
-        document.getElementById("mostrar").innerHTML = (event.target.textContent);
-        let buscarAsiento = document.getElementById("mostrar").textContent;
-        console.log(this.pasajeros);
+        
+        $("#mostrar").html((event.target.textContent));
         for (let i = 0; i < this.pasajeros.length; i++) {
-            if (this.pasajeros[i].asiento == buscarAsiento) {
-                document.getElementById("userNombre").value = this.pasajeros[i].nombre;
-                document.getElementById("userApellido").value = this.pasajeros[i].apellido;
-                document.getElementById("userDNI").value = this.pasajeros[i].dni;
+            if (this.pasajeros[i].asiento == this.asiento.text()) {
+                $("#userNombre").val(this.pasajeros[i].nombre);
+                $("#userApellido").val(this.pasajeros[i].apellido);
+                $("#userDNI").val(this.pasajeros[i].dni);
             }
         }
         this.limpiarBuscar();
     }
     reservar() {
-        let nombre = document.getElementById("userNombre").value;
-        let apellido = document.getElementById("userApellido").value;
-        let dni = document.getElementById("userDNI").value;
-        let asiento = document.getElementById("mostrar").textContent;
-        let imprimir = document.getElementById("imprimir");
-        let comprobar = this.buscarAsiento();
-        if (comprobar == true) {
+        let asiento = $("#mostrar").text();
+        let imprimir = $("#imprimir");
+        
+        if (this.buscarAsiento() == true) {
             alert("El asiento ya está ocupado");
-        } else if ((nombre == "") && (apellido == "") && (dni == "")) {
+        } else if (($("#userNombre").val() == "") && ($("#userApellido").val() == "") && ($("#dni").val() == "")) {
             alert("El registro está vacío, intentalo nuevamente");
-        } else if ((nombre == "") || (apellido == "") || (dni == "")) {
+        } else if (($("#userNombre").val() == "") || ($("#userApellido").val() == "") || ($("#dni").val() == "")) {
             alert("Faltan ingresar datos");
         } else if (asiento == "") {
             alert("Falta seleccionar el número de asiento a ser ocupado");
         } else {
-            this.pasajeros.push(new Pasajero(nombre, apellido, dni, asiento));
-            imprimir.innerHTML = "<strong>Asiento Registrado</strong> </br>Nombre: " + nombre + "</br>Apellido: " + apellido + "</br>DNI: " + dni + "</br>Asiento:" + asiento;
-            this.limpiar();
+            this.pasajeros.push(new Pasajero($("#userNombre").val(), $("#userApellido").val(), $("#userDNI").val(), asiento));
+            imprimir.html = `<strong>Asiento Registrado</strong> </br>Nombre: ${ $("#userNombre").val()} </br>Apellido:  ${$("#userApellido").val()} </br>DNI: ${ $("#dni").val()} </br>Asiento: ${asiento}`;
+            this.limpiar();  
         }
         let x = this._asientos.indexOf(asiento);
         this.celdas[x].style.backgroundColor = "#73C6B6";
     }
     cancelar() {
-        let asiento = document.getElementById("mostrar").textContent;
+        
         let res;
-        let n = this._asientos.indexOf(asiento);
+        let n = this._asientos.indexOf(this.asiento.text());
         this.celdas[n].style.backgroundColor = "white";
         for (let i = 0; i < this.pasajeros.length; i++) {
-            if (asiento == this.pasajeros[i].asiento) {
+            if (this.asiento.text() == this.pasajeros[i].asiento) {
                 this.pasajeros.splice(i, 1);
                 alert("Asiento liberado");
                 this.limpiar();
@@ -114,12 +111,12 @@ class Avion {
         return res;
     }
     limpiar() {
-        let inputs = document.getElementsByTagName("input");
-        let espacioAsiento = document.getElementById("mostrar");
+        let inputs = $("input");
+        
         for (let i = 0; i < inputs.length; i++) {
             inputs[i].value = "";
         }
-        espacioAsiento.innerHTML = "";
+        this.asiento.html = "";
     }
     limpiarLista() {
         let listado = document.getElementById("listado");
@@ -146,10 +143,10 @@ class Avion {
     }
 }
 
-// let avion = new Avion;
+let avion = new Avion;
 
 $(document).ready(() => {
     
-        let avion = new Avion();
+        // let avion = new Avion();
         avion.iniciar();
     })
