@@ -32,21 +32,21 @@ class Avion {
                 $("#userDNI").attr("disabled", "disabled");
                 $("#userNombre").attr("disabled", "disabled");
                 $("#userApellido").attr("disabled", "disabled");
+                break;
             } else {
-                this.limpiarDatos();
                 if ($(`#btnReservar`).hasClass("no-display") == false) {
                     $("#userDNI").removeAttr("disabled");
                     $("#userNombre").removeAttr("disabled");
                     $("#userApellido").removeAttr("disabled");
+                    this.limpiarDatos();
                 }
             }
         }
-        this.limpiarBuscar();
     }
     reservar() {
         let asiento = $("#userAsiento").val();
 
-        if (this.buscarAsiento() == true) {
+        if (this.buscarAsiento()) {
             swal({
                 title: "Error",
                 text: "El asiento ya está ocupado",
@@ -91,7 +91,7 @@ class Avion {
     }
     cancelar() {
         let n = this._asientos.indexOf(this.asiento.val());
-        this.celdas[n].classList.remove("reservadogit ");
+        this.celdas[n].classList.remove("reservado");
         for (let i = 0; i < this.pasajeros.length; i++) {
             if (this.asiento.val() == this.pasajeros[i].asiento) {
                 this.pasajeros.splice(i, 1);
@@ -117,7 +117,9 @@ class Avion {
             });
         } else {
             console.log(this.pasajeros);
-            this.pasajeros.sort((a, b)=>{return (parseInt(a.asiento) - parseInt(b.asiento));});
+            this.pasajeros.sort((a, b) => {
+                return (parseInt(a.asiento) - parseInt(b.asiento));
+            });
             console.log(this.pasajeros);
             for (let i = 0; i < this.pasajeros.length; i++) {
                 let datos = this.pasajeros[i];
@@ -137,8 +139,13 @@ class Avion {
         for (let i = 0; i < this.pasajeros.length; i++) {
             if (dniBuscado == this.pasajeros[i].dni) {
                 res = "DNI: " + dniBuscado + "\n Nombre: " + this.pasajeros[i].nombre + " Apellido: " + this.pasajeros[i].apellido + " Asiento: " + this.pasajeros[i].asiento;
-                break;
-                
+                swal({
+                    title: "DNI encontrado",
+                    text: res,
+                    type: 'info',
+                    confirmButtonText: 'Aceptar'
+                });
+                break;                
             } else {
                 swal({
                     title: "Error",
@@ -146,29 +153,18 @@ class Avion {
                     type: 'error',
                     confirmButtonText: 'Aceptar'
                 });
-                $("#buscarDNI").val() = "";
             }
         }
-        swal({
-            title: "DNI encontrado",
-            text: res,
-            type: 'info',
-            confirmButtonText: 'Aceptar'
-        });
-        $("#buscarDNI").val() = "";
-
     }
     buscarAsiento() {
         let asiento = this.asiento.val();
-        let res;
         for (let i = 0; i < this.pasajeros.length; i++) {
             if (asiento == this.pasajeros[i].asiento) {
-                res = true;
+                return (true);
             } else {
-                res = false;
+                return (false);
             }
         }
-        return res;
     }
     limpiarDatos() {
         $("#userDNI").val("");
@@ -181,12 +177,6 @@ class Avion {
             inputs[i].value = "";
         }
         this.asiento.html = "";
-    }
-    limpiarBuscar() {
-        let espacio = $("#dniEncontrado");
-        let input = $("#buscarDNI");
-        espacio.html("");
-        input.val("");
     }
     iniciar() {
         $("#ingresar").click(() => {
@@ -204,6 +194,7 @@ class Avion {
             $("#userApellido").removeAttr("disabled");
         });
         $("#opLiberar").click(() => {
+            this.limpiar();
             $(`#${this.navegacion[1]}`).addClass("no-display");
             $(`#${this.navegacion[2]}`).removeClass("no-display");
             $(`#btnReservar`).addClass("no-display");
@@ -242,8 +233,7 @@ class Avion {
     }
 }
 
-let avion = new Avion;
-
 $(document).ready(() => {
+    let avion = new Avion;
     avion.iniciar();
 });
