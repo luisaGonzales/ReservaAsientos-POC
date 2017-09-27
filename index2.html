@@ -9,7 +9,6 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
-
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i|Kaushan+Script|Montserrat:400,500,600,600i,700,700i,800,800i|Roboto+Slab:400,700&amp;subset=latin-ext"
         rel="stylesheet">
@@ -24,7 +23,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                     <p class="text2">RESERVA DE ASIENTOS</p>
-                    <p><a class="btn btn-primary" href="#" role="button" id="ingresar">INGRESAR</a></p>
+                    <p><a class="btn btn-primary" href="#" role="button" id="ingresar"><i class="fa fa-sign-in" aria-hidden="true"></i> INGRESAR</a></p>
                 </div>
             </div>
         </div>
@@ -38,16 +37,16 @@
             </div>
             <div class="row text-center">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <p><a class="btn btn-primary" href="#" role="button" id="opReservar">RESERVAR</a></p>
+                    <p><a class="btn btn-primary" href="#" role="button" id="opReservar"><i class="fa fa-list-alt" aria-hidden="true"></i> RESERVAR</a></p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <p><a class="btn btn-primary" href="#" role="button" id="opLiberar">LIBERAR</a></p>
+                    <p><a class="btn btn-primary" href="#" role="button" id="opLiberar"><i class="fa fa-window-close-o" aria-hidden="true"></i> LIBERAR</a></p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <p><a class="btn btn-primary" href="#" role="button" id="opBuscar">BUSCAR</a></p>
+                    <p><a class="btn btn-primary" href="#" role="button" id="opBuscar"><i class="fa fa-search"></i> BUSCAR</a></p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                    <p><a class="btn btn-primary" href="#" role="button" id="opListar">LISTAR</a></p>
+                    <p><a class="btn btn-primary" href="#" role="button" id="opListar"><i class="fa fa-bars" aria-hidden="true"></i> LISTAR</a></p>
                 </div>
             </div>
         </div>
@@ -89,39 +88,79 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="">DNI:</label>
                     <div class="col-sm-8">
-                        <input type="number" class="form-control" id="dni">
+                        <input type="number" class="form-control" id="dni" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="">Nombre:</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="nombre">
+                        <input type="text" class="form-control" id="nombre" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="">Apellido:</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="apellido">
+                        <input type="text" class="form-control" id="apellido" disabled>
                     </div>
                 </div>
             </div>
             <div class="row text-center">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <p><a class="btn btn-primary pull-right" href="#" role="button" id="userReservar">Reservar</a></p>
+                        <p><a class="btn btn-primary pull-right" href="#" role="button" id="btnReservar"><i class="fa fa-list-alt" aria-hidden="true"></i> Reservar</a></p>
+                        <p><a class="btn btn-primary pull-right no-display" href="#" role="button" id="btnCancelar"><i class="fa fa-window-close-o" aria-hidden="true"></i> Liberar</a></p>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <p><a class="btn btn-primary pull-left" href="#" role="button" id="menuPrincipal">Menú Principal</a></p>
+                        <p><a class="btn btn-primary pull-left" href="#" role="button" id="btnVolver"><i class="fa fa-hand-o-up" aria-hidden="true"></i> Menú Principal</a></p>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <p><a class="btn btn-primary pull-right no-display" href="#" role="button" id="userLiberar">Liberar</a></p>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="busqueda" class="no-display">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                    <h1 class="text3">Búsqueda de Pasajeros</h1>
+                </div>
+            </div>
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="">DNI:</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="buscarDNI" placeholder="Ingrese el DNI">
+                    </div>
+                    <div id="dniEncontrado">
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <p><a class="btn btn-primary pull-right" href="#" role="button" id="btnBuscarDNI"><i class="fa fa-search"></i> Buscar</a></p>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <p><a class="btn btn-primary pull-left" href="#" role="button" id="btnVolverBuscar"><i class="fa fa-hand-o-up" aria-hidden="true"></i> Menú Principal</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section id="busqueda">
-        
+    <section id="imprimir" class="no-display">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                    <h1 class="text3">Lista de Pasajeros</h1>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                    <p><a class="btn btn-primary" href="#" role="button" id="btnVolverListar"><i class="fa fa-hand-o-up" aria-hidden="true"></i> Menú Principal</a></p>
+                </div>
+            </div>
+            
+        </div>
     </section>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -131,7 +170,7 @@
     <!-- FontAwesome -->
     <script src="https://use.fontawesome.com/1625bb79ec.js"></script>
     <!-- Javascript -->
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main0.js"></script>
 </body>
 
 </html>

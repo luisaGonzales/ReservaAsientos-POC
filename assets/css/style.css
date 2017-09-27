@@ -3,11 +3,9 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-#bienvenida{
-    height: inherit;
-    text-align: center;
+p{
+    margin: 0 !important;
 }
-
 .no-display{
     display: none;
 }
@@ -31,18 +29,20 @@
     color: #333333;
 }
 
-header .btn{
+#bienvenida .btn{
     margin-bottom: 124px;
     color: white;
 }
 
-header {
+#bienvenida {
     background-image: url(../img/portada1.jpeg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     height: 900px;
     top: 0px;
+    height: inherit;
+    text-align: center;
 }
 
 .text3{
